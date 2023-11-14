@@ -19,6 +19,8 @@ num_bins = 3
 bin_labels = ['Low', 'Medium', 'Top']
 data["Speed"] = pd.cut(data['Velocity [km/h]'], bins=num_bins, labels=bin_labels)
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
+ 
+server=app.server
 img = r"assets\data-collection.png"
 img1 = r"assets\channels.png"
 img2 = r'assets\vehicle ran time.jpg'
