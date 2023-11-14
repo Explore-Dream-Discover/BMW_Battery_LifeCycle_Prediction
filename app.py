@@ -72,8 +72,8 @@ kpi_card_no_of_max_volt = dbc.Card(
     dbc.CardBody(
         [
             dbc.CardImg(src=img3, style={"width": "100px", "height": "100px"}),
-            html.H4('Max Heater Voltage', className="card-title"),
-            html.P("{:.2f}".format(max(data['Heater Voltage [V]'].unique())), className="card-text"),
+            html.H4('Max Elevation', className="card-title"),
+            html.P("{:.2f}".format(max(data['Elevation [m]'].unique())), className="card-text"),
         ]
     ),)
     
