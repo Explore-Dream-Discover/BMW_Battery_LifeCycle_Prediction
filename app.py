@@ -24,7 +24,7 @@ server=app.server
 img = r"assets\data-collection.png"
 img1 = r"assets\channels.png"
 img2 = r'assets\vehicle ran time.jpg'
-img3 = r'assets\voltage.png'
+img3 = r'assets\voltage.gif'
 img4 = r'assets\current.png'
 
 
