@@ -27,6 +27,7 @@ img2 = r'assets\vehicle ran time.jpg'
 img3 = r'assets\voltage.gif'
 img4 = r'assets\current.png'
 img5 = r'assets\throttle.png'
+img6 = r'assets\brake.png'
 
 
 
@@ -88,9 +89,9 @@ kpi_card_no_of_max_volt = dbc.Card(
 kpi_card_no_of_max_speed = dbc.Card(
     dbc.CardBody(
         [
-            dbc.CardImg(src=img5, style={"width": "100px", "height": "100px"}),
-            html.H4('Max Throttle', className="card-title"),
-            html.P("{:.2f}".format(max(data['Throttle [%]'].unique())), className="card-text"),
+            dbc.CardImg(src=img6, style={"width": "100px", "height": "100px"}),
+            html.H4('Regenerative Braking Signal', className="card-title"),
+            html.P("{:.2f}".format(max(data['Regenerative Braking Signal '].unique())), className="card-text"),
         ]
     ),)
 
