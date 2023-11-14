@@ -26,6 +26,8 @@ img1 = r"assets\channels.png"
 img2 = r'assets\vehicle ran time.jpg'
 img3 = r'assets\voltage.gif'
 img4 = r'assets\current.png'
+img5 = r'assets\throttle.png'
+
 
 
 
@@ -86,9 +88,9 @@ kpi_card_no_of_max_volt = dbc.Card(
 kpi_card_no_of_max_speed = dbc.Card(
     dbc.CardBody(
         [
-            dbc.CardImg(src=img4, style={"width": "100px", "height": "100px"}),
-            html.H4('Max Speed', className="card-title"),
-            html.P("{:.2f}".format(max(data['Velocity [km/h]'].unique())), className="card-text"),
+            dbc.CardImg(src=img5, style={"width": "100px", "height": "100px"}),
+            html.H4('Max Throttle', className="card-title"),
+            html.P("{:.2f}".format(max(data['Throttle [%]'].unique())), className="card-text"),
         ]
     ),)
 
