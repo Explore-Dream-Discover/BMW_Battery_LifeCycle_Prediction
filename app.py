@@ -10,7 +10,7 @@ import os
 print(os.getcwd())
 
 
-data =pd.read_csv(r"data\VehicleDataAnalysis.csv")
+data =pd.read_csv(r"\\data\VehicleDataAnalysis.csv")
 print(data.columns)
 
 # Perform equal width binning
