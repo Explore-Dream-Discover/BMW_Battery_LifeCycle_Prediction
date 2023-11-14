@@ -111,14 +111,55 @@ cards = dbc.Container(
 
 
 
+########Gauge
+# Create custom gauge component (e.g., using Plotly)
+def create_gauge(value, title):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=value,
+        title={'text': title},
+        gauge = {
+        'axis': {'range': [None, 500], 'tickwidth': 1, 'tickcolor': "darkblue"},
+        'bar': {'color': "darkblue"},
+        'bgcolor': "white",
+        'borderwidth': 2,
+        'bordercolor': "gray",
+        'steps': [
+            {'range': [0, 250], 'color': 'cyan'},
+            {'range': [250, 400], 'color': 'royalblue'}],
+        'threshold': {
+            'line': {'color': "red", 'width': 4},
+            'thickness': 0.75,
+            'value': 490}}
+    ))
+    fig.update_layout(height=250) 
+    return fig
+
+
+
+Analog_plots =dbc.Container([
+    dbc.Row([
+             
+             dbc.Col(dcc.Graph(id='gauge1', figure=create_gauge_speed(max(data['Velocity [km/h]'].unique()), "Vehicle Top Speed"))),
+            dbc.Col(dcc.Graph(id='gauge2', figure=create_gauge(max(data['Motor Torque [Nm]'].unique()), "Maximum Motor Torque"))),
+            dbc.Col(dcc.Graph(id='gauge3', figure=create_gauge(max(data['Throttle [%]'].unique()), "Throttle"))),
+    
+   
+            
+            
+            ])
+])
+
+
+
 
 
 
 app.layout = html.Div([#title
                         html.H1('BATTERY  HEATING DATA IN REAL DRIVING CYCLES', className='dashboard-title'),
                         html.Div(cards,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
-                        # html.Div(html.H3('1. Speed,Torque,Throttle response analysis')),
-                        # html.Div(Analog_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        html.Div(html.H3('1.Vehicle Speed Analysis')),
+                        html.Div(Analog_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.Div(html.H3('2.Battery Current and Voltage Analysis')),
                         # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
