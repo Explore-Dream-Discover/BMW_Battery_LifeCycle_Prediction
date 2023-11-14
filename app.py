@@ -6,9 +6,11 @@ import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import pandas as pd
+import os
+print(os.getcwd())
 
 
-data =pd.read_csv(r"D:\Pavan\BMW Battery\data\VehicleDataAnalysis.csv")
+data =pd.read_csv(r"data\VehicleDataAnalysis.csv")
 print(data.columns)
 
 # Perform equal width binning
