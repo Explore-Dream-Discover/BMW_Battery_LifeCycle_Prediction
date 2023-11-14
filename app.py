@@ -135,6 +135,27 @@ def create_gauge(value, title):
     fig.update_layout(height=250) 
     return fig
 
+def create_gauge_speed(value, title):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=value,
+        title={'text': title},
+        gauge = {
+        'axis': {'range': [None, 200], 'tickwidth': 1, 'tickcolor': "darkblue"},
+        'bar': {'color': "darkblue"},
+        'bgcolor': "white",
+        'borderwidth': 2,
+        'bordercolor': "gray",
+        'steps': [
+            {'range': [0, 100], 'color': 'cyan'},
+            {'range': [100, 200], 'color': 'royalblue'}],
+        'threshold': {
+            'line': {'color': "red", 'width': 4},
+            'thickness': 0.75,
+            'value': 200}}
+    ))
+    fig.update_layout(height=250)
+    return fig
 
 
 Analog_plots =dbc.Container([
