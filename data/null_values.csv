@@ -1,0 +1,49 @@
+Channel,Value,Percentage
+Time [s],0,0.0
+Velocity [km/h],0,0.0
+Elevation [m],0,0.0
+Throttle [%],0,0.0
+Motor Torque [Nm],0,0.0
+Longitudinal Acceleration [m/s^2],0,0.0
+Regenerative Braking Signal ,0,0.0
+Battery Voltage [V],0,0.0
+Battery Current [A],0,0.0
+Battery Temperature [�C],0,0.0
+max_ Battery Temperature [�C],0,0.0
+SoC [%],30793,2.9030308686843544
+displayed SoC [%],30794,2.903125144359628
+min_ SoC [%],30793,2.9030308686843544
+max_ SoC [%),30794,2.903125144359628
+Heating Power CAN [kW],0,0.0
+Requested Heating Power [W],0,0.0
+AirCon Power [kW],0,0.0
+Heater Signal,0,0.0
+Ambient Temperature [�C],0,0.0
+Requested Coolant Temperature [�C],0,0.0
+Heat Exchanger Temperature [�C],0,0.0
+Cabin Temperature Sensor [�C],0,0.0
+Heating Power LIN [W],276513,26.068449796788784
+Heater Voltage [V],276513,26.068449796788784
+Heater Current [A],276513,26.068449796788784
+Coolant Temperature Heatercore [�C],276513,26.068449796788784
+Coolant Temperature Inlet [�C],276513,26.068449796788784
+Ambient Temperature Sensor [�C],438266,41.31782309923741
+Coolant Volume Flow +500 [l/h],461960,43.55159094915807
+Temperature Coolant Heater Inlet [�C],438266,41.31782309923741
+Temperature Coolant Heater Outlet [�C],438266,41.31782309923741
+Temperature Heat Exchanger Outlet [�C],438266,41.31782309923741
+Temperature Defrost lateral left [�C],438266,41.31782309923741
+Temperature Defrost lateral right [�C],438266,41.31782309923741
+Temperature Defrost central [�C],438266,41.31782309923741
+Temperature Defrost central left [�C],438266,41.31782309923741
+Temperature Defrost central right [�C],438266,41.31782309923741
+Temperature Footweel Driver [�C],438266,41.31782309923741
+Temperature Footweel Co-Driver [�C],438266,41.31782309923741
+Temperature Feetvent Co-Driver [�C],438266,41.31782309923741
+Temperature Feetvent Driver [�C],438266,41.31782309923741
+Temperature Head Co-Driver [�C],438266,41.31782309923741
+Temperature Head Driver [�C],438266,41.31782309923741
+Temperature Vent right [�C] ,438266,41.31782309923741
+Temperature Vent central right [�C],438266,41.31782309923741
+Temperature Vent central left [�C],438266,41.31782309923741
+Temperature Vent right [�C],438266,41.31782309923741
