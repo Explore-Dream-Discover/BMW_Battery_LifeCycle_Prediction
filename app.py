@@ -11,7 +11,8 @@ print(os.getcwd())
 
 
 data =pd.read_csv(r"data/VehicleDataAnalysis.csv")
-print(data.columns)
+print(("*"*50))
+print((data['Regenerative Braking Signal ']==1).sum())
 
 # Perform equal width binning
 # Define the number of bins
@@ -80,7 +81,7 @@ kpi_card_no_of_max_volt = dbc.Card(
         [
             dbc.CardImg(src=img3, style={"width": "100px", "height": "100px"}),
             html.H4('Max Elevation', className="card-title"),
-            html.P("{:.2f}".format(max(data['Elevation [m]'].unique())), className="card-text"),
+            html.P("{:.2f}".format(max(data['Elevation [m]'].value_counts())), className="card-text"),
         ]
     ),)
     
@@ -90,8 +91,8 @@ kpi_card_no_of_max_speed = dbc.Card(
     dbc.CardBody(
         [
             dbc.CardImg(src=img6, style={"width": "100px", "height": "100px"}),
-            html.H4('Regenerative Braking Signal', className="card-title"),
-            html.P("{:.2f}".format(max(data['Regenerative Braking Signal '].unique())), className="card-text"),
+            html.H4(' Regen Braking Active', className="card-title"),
+            html.P("{:.2f}".format((data['Regenerative Braking Signal ']==1).sum()), className="card-text"),
         ]
     ),)
 
@@ -173,6 +174,33 @@ Analog_plots =dbc.Container([
 ])
 
 
+# Create histogram traces
+trace1 = go.Histogram(x=data['Velocity [km/h]'], name='Speed', opacity=0.75,nbinsx=20)
+trace2 = go.Histogram(x=data['Motor Torque [Nm]'], name='Notor Torque', opacity=0.75)
+
+# Create a figure with subplots in a row
+# Create figures for each histogram
+fig1 = go.Figure(data=[trace1])
+fig1.update_layout(title='Histogram of Speed Data 1', xaxis_title='Speed', yaxis_title='Frequency'),
+""
+fig2 = go.Figure(data=[trace2])
+fig2.update_layout(title='Histogram of Torque', xaxis_title='Torque', yaxis_title='Frequency'),
+
+
+
+
+histogram_plots = dbc.Container([
+    dbc.Row([
+        dcc.Graph(id='speed-histogram-1', figure=fig1),
+        dcc.Graph(id='speed-histogram-2', figure=fig2)
+    ])
+
+
+])
+
+
+
+
 
 
 
@@ -180,9 +208,11 @@ Analog_plots =dbc.Container([
 app.layout = html.Div([#title
                         html.H1('BATTERY  HEATING DATA IN REAL DRIVING CYCLES', className='dashboard-title'),
                         html.Div(cards,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
-                        html.Div(html.H3('1.Vehicle Speed Analysis')),
+                        html.Div(html.H3('1.Vehicle Data Analysis')),
                         html.Div(Analog_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
-                        # html.Div(html.H3('2.Battery Current and Voltage Analysis')),
+
+                        html.Div(html.H3('2.Histogram plots for Vehicle data')),
+                        html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
                         # html.Div(temp_plot_container,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
