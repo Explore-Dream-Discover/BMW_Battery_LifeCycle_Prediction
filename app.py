@@ -11,6 +11,9 @@ print(os.getcwd())
 
 
 data =pd.read_csv(r"data/VehicleDataAnalysis.csv")
+battery = pd.read_csv(r"data\Battery Data Analysis.csv")
+heatData = pd.read_csv(r"data\HeatDataAnalysis.csv")
+print(heatData.columns)
 print(("*"*50))
 print((data['Regenerative Braking Signal ']==1).sum())
 
@@ -19,7 +22,8 @@ print((data['Regenerative Braking Signal ']==1).sum())
 num_bins = 3
 bin_labels = ['Low', 'Medium', 'Top']
 data["Speed"] = pd.cut(data['Velocity [km/h]'], bins=num_bins, labels=bin_labels)
-print(data.columns)
+
+print(data["Speed"].value_counts())
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
  
 server=app.server
@@ -68,7 +72,7 @@ kpi_card_no_of_channels = dbc.Card(
     dbc.CardBody(
         [
             dbc.CardImg(src=img1, style={"width": "100px", "height": "100px"}),
-            html.H4('No of Channels', className="card-title"),
+            html.H4('No of Channels', className='card-title'),
             #Hard coding column names
             html.P( f"{48}", className="card-text"),
         ]
@@ -181,6 +185,12 @@ trace2 = go.Histogram(x=data['Motor Torque [Nm]'], name='Motor Torque', opacity=
 trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nbinsx=30)
 
 
+
+
+# Create a pie chart trace
+trace4 = go.Pie(labels=data["Speed"].index, values=data["Speed"].values)
+trace5 = go.Pie(labels=heatData["Heater Signal"].index, values=data["Speed"].values)
+
 # Create a figure with subplots in a row
 # Create figures for each histogram
 fig1 = go.Figure(data=[trace1])
@@ -192,6 +202,16 @@ fig2.update_layout(title='Torque Distribution', xaxis_title='Torque', yaxis_titl
 
 fig3 = go.Figure(data=[trace3])
 fig3.update_layout(title='Elevation', xaxis_title='Elevation', yaxis_title='Frequency'),
+
+
+
+
+fig4 = go.Figure(data=[trace4])
+fig4.update_layout(title='Speed', xaxis_title='Speed'),
+
+
+fig5 = go.Figure(data=[trace5])
+fig5.update_layout(title='Heating Signal'),
 
 
 
@@ -208,6 +228,19 @@ histogram_plots = dbc.Container([
 
 
 
+pie_plots = dbc.Container([
+    dbc.Row([
+        dcc.Graph(id='speed-pie-1', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
+        dcc.Graph(id='heater signal', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
+       
+    ])
+
+
+])
+
+
+
+
 
 
 
@@ -221,6 +254,11 @@ app.layout = html.Div([#title
 
                         html.Div(html.H3('2.Histogram plots for Vehicle data')),
                         html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+
+
+                        html.Div(html.H3('3.Pie plots for Vehicle data')),
+                        html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+
                         # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
                         # html.Div(temp_plot_container,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
