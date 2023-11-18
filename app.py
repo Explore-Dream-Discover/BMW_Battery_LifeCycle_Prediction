@@ -19,6 +19,7 @@ print((data['Regenerative Braking Signal ']==1).sum())
 num_bins = 3
 bin_labels = ['Low', 'Medium', 'Top']
 data["Speed"] = pd.cut(data['Velocity [km/h]'], bins=num_bins, labels=bin_labels)
+print(data.columns)
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
  
 server=app.server
@@ -176,23 +177,30 @@ Analog_plots =dbc.Container([
 
 # Create histogram traces
 trace1 = go.Histogram(x=data['Velocity [km/h]'], name='Speed', opacity=0.75,nbinsx=20)
-trace2 = go.Histogram(x=data['Motor Torque [Nm]'], name='Notor Torque', opacity=0.75)
+trace2 = go.Histogram(x=data['Motor Torque [Nm]'], name='Motor Torque', opacity=0.75,nbinsx=30)
+trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nbinsx=30)
+
 
 # Create a figure with subplots in a row
 # Create figures for each histogram
 fig1 = go.Figure(data=[trace1])
-fig1.update_layout(title='Histogram of Speed Data 1', xaxis_title='Speed', yaxis_title='Frequency'),
-""
+fig1.update_layout(title='Speed Distribution', xaxis_title='Speed', yaxis_title='Frequency'),
+
 fig2 = go.Figure(data=[trace2])
-fig2.update_layout(title='Histogram of Torque', xaxis_title='Torque', yaxis_title='Frequency'),
+fig2.update_layout(title='Torque Distribution', xaxis_title='Torque', yaxis_title='Frequency'),
+
+
+fig3 = go.Figure(data=[trace3])
+fig3.update_layout(title='Elevation', xaxis_title='Elevation', yaxis_title='Frequency'),
 
 
 
 
 histogram_plots = dbc.Container([
     dbc.Row([
-        dcc.Graph(id='speed-histogram-1', figure=fig1),
-        dcc.Graph(id='speed-histogram-2', figure=fig2)
+        dcc.Graph(id='speed-histogram-1', figure=fig1,style={'width': '33%', 'display': 'inline-block'}),
+        dcc.Graph(id='speed-histogram-2', figure=fig2,style={'width': '33%', 'display': 'inline-block'}),
+        dcc.Graph(id='speed-histogram-3', figure=fig3,style={'width': '33%', 'display': 'inline-block'})
     ])
 
 
