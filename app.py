@@ -13,7 +13,11 @@ print(os.getcwd())
 data =pd.read_csv(r"data/VehicleDataAnalysis.csv")
 battery = pd.read_csv(r"data\Battery Data Analysis.csv")
 heatData = pd.read_csv(r"data\HeatDataAnalysis.csv")
-print(heatData.columns)
+dummy =pd.DataFrame({
+    'category': ['A', 'B', 'C', 'D'],
+    'values': [30, 20, 25, 15]
+})
+print(data.columns)
 print(("*"*50))
 print((data['Regenerative Braking Signal ']==1).sum())
 
@@ -22,6 +26,7 @@ print((data['Regenerative Braking Signal ']==1).sum())
 num_bins = 3
 bin_labels = ['Low', 'Medium', 'Top']
 data["Speed"] = pd.cut(data['Velocity [km/h]'], bins=num_bins, labels=bin_labels)
+data["Torque"] = pd.cut(data['Motor Torque [Nm]'], bins=num_bins, labels=bin_labels)
 
 print(data["Speed"].value_counts())
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -188,9 +193,9 @@ trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nb
 
 
 # Create a pie chart trace
-trace4 = go.Pie(labels=data["Speed"].index, values=data["Speed"].values)
-trace5 = go.Pie(labels=heatData["Heater Signal"].index, values=data["Speed"].values)
-
+trace4 = go.Pie(labels=data['Speed'], values=data['Elevation [m]'])
+trace5 = go.Pie(labels=data['Torque'], values=data['Elevation [m]'])
+trace6 = go.Bar(x=data['Torque'], y=data["Elevation [m]"])
 # Create a figure with subplots in a row
 # Create figures for each histogram
 fig1 = go.Figure(data=[trace1])
@@ -211,7 +216,10 @@ fig4.update_layout(title='Speed', xaxis_title='Speed'),
 
 
 fig5 = go.Figure(data=[trace5])
-fig5.update_layout(title='Heating Signal'),
+fig5.update_layout(title='Torque'),
+
+fig6 = go.Figure(data=[trace6])
+fig6.update_layout(title='Bar'),
 
 
 
@@ -231,7 +239,8 @@ histogram_plots = dbc.Container([
 pie_plots = dbc.Container([
     dbc.Row([
         dcc.Graph(id='speed-pie-1', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
-        dcc.Graph(id='heater signal', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
+        dcc.Graph(id='heater signal', figure=fig5,style={'width': '33%', 'display': 'inline-block'}),
+        dcc.Graph(id='bar', figure=fig6,style={'width': '33%', 'display': 'inline-block'}),
        
     ])
 
