@@ -221,7 +221,7 @@ fig5 = go.Figure(data=[trace5])
 fig5.update_layout(title='Torque'),
 
 
-fig6 = go.Figure(data=[trace5])
+fig6 = go.Figure(data=[trace6])
 fig6.update_layout(title='Torque'),
 
 
