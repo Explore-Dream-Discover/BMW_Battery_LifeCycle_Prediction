@@ -271,8 +271,8 @@ app.layout = html.Div([#title
                         html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
 
-                        # html.Div(html.H3('3.Pie plots for Vehicle data')),
-                        # html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        html.Div(html.H3('3.Pie plots for Vehicle data')),
+                        html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
                         # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
