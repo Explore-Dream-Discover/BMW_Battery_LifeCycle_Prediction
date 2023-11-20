@@ -267,8 +267,8 @@ app.layout = html.Div([#title
                         html.Div(html.H3('1.Vehicle Data Analysis')),
                         html.Div(Analog_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
-                        # html.Div(html.H3('2.Histogram plots for Vehicle data')),
-                        # html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        html.Div(html.H3('2.Histogram plots for Vehicle data')),
+                        html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
 
                         # html.Div(html.H3('3.Pie plots for Vehicle data')),
