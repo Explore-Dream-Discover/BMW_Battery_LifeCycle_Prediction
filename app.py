@@ -189,6 +189,7 @@ trace1 = go.Histogram(x=data['Velocity [km/h]'], name='Speed', opacity=0.75,nbin
 trace2 = go.Histogram(x=data['Motor Torque [Nm]'], name='Motor Torque', opacity=0.75,nbinsx=30)
 trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nbinsx=30)
 # trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nbinsx=30)
+# trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nbinsx=30)
 
 
 
