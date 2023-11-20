@@ -217,8 +217,8 @@ fig4 = go.Figure(data=[trace4])
 fig4.update_layout(title='Speed', xaxis_title='Speed'),
 
 
-fig5 = go.Figure(data=[trace5])
-fig5.update_layout(title='Torque'),
+# fig5 = go.Figure(data=[trace5])
+# fig5.update_layout(title='Torque'),
 
 
 
@@ -243,7 +243,7 @@ histogram_plots = dbc.Container([
 pie_plots = dbc.Container([
     dbc.Row([
         dcc.Graph(id='speed-pie-1', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
-        dcc.Graph(id='heater signal', figure=fig5,style={'width': '33%', 'display': 'inline-block'}),
+        #dcc.Graph(id='heater signal', figure=fig5,style={'width': '33%', 'display': 'inline-block'}),
         
        
        
