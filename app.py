@@ -221,8 +221,7 @@ fig5 = go.Figure(data=[trace5])
 fig5.update_layout(title='Torque'),
 
 
-fig6 = go.Figure(data=[trace6])
-fig6.update_layout(title='Torque'),
+
 
 
 
@@ -245,7 +244,7 @@ pie_plots = dbc.Container([
     dbc.Row([
         dcc.Graph(id='speed-pie-1', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
         dcc.Graph(id='heater signal', figure=fig5,style={'width': '33%', 'display': 'inline-block'}),
-        dcc.Graph(id='bar signal', figure=fig6,style={'width': '33%', 'display': 'inline-block'}),
+        
        
        
     ])
@@ -274,7 +273,7 @@ app.layout = html.Div([#title
                         html.Div(html.H3('3.Pie plots for Vehicle data')),
                         html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
-                        # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        # # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
                         # html.Div(temp_plot_container,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("4.Time vs. Other"),
