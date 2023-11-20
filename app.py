@@ -194,7 +194,7 @@ trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nb
 
 
 
-# Create a pie chart trace
+# Create a pie chart trace  
 trace4 = go.Pie(labels=data['Speed'], values=data['Elevation [m]'])
 trace5 = go.Pie(labels=data['Torque'], values=data['Elevation [m]'])
 trace6 = go.Pie(labels=data['Torque'], values=data['Elevation [m]'])
