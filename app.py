@@ -263,16 +263,16 @@ pie_plots = dbc.Container([
 
 app.layout = html.Div([#title
                         html.H1('BATTERY  HEATING DATA IN REAL DRIVING CYCLES', className='dashboard-title'),
-                        html.Div(cards,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
-                        html.Div(html.H3('1.Vehicle Data Analysis')),
-                        html.Div(Analog_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        # html.Div(cards,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        # html.Div(html.H3('1.Vehicle Data Analysis')),
+                        # html.Div(Analog_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
-                        html.Div(html.H3('2.Histogram plots for Vehicle data')),
-                        html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        # html.Div(html.H3('2.Histogram plots for Vehicle data')),
+                        # html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
 
-                        html.Div(html.H3('3.Pie plots for Vehicle data')),
-                        html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+                        # html.Div(html.H3('3.Pie plots for Vehicle data')),
+                        # html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
                         # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
