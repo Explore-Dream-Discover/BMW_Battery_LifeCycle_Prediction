@@ -11,8 +11,8 @@ print(os.getcwd())
 
 
 data =pd.read_csv(r"data/VehicleDataAnalysis.csv")
-battery = pd.read_csv(r"data\Battery Data Analysis.csv")
-heatData = pd.read_csv(r"data\HeatDataAnalysis.csv")
+battery = pd.read_csv(r"data/Battery Data Analysis.csv")
+heatData = pd.read_csv(r"data/HeatDataAnalysis.csv")
 dummy =pd.DataFrame({
     'category': ['A', 'B', 'C', 'D'],
     'values': [30, 20, 25, 15]
