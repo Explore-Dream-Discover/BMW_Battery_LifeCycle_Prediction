@@ -195,6 +195,7 @@ trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nb
 # Create a pie chart trace
 trace4 = go.Pie(labels=data['Speed'], values=data['Elevation [m]'])
 trace5 = go.Pie(labels=data['Torque'], values=data['Elevation [m]'])
+trace6 = go.Pie(labels=data['Torque'], values=data['Elevation [m]'])
 
 # Create a figure with subplots in a row
 # Create figures for each histogram
@@ -219,6 +220,10 @@ fig5 = go.Figure(data=[trace5])
 fig5.update_layout(title='Torque'),
 
 
+fig6 = go.Figure(data=[trace5])
+fig6.update_layout(title='Torque'),
+
+
 
 
 
@@ -239,6 +244,7 @@ pie_plots = dbc.Container([
     dbc.Row([
         dcc.Graph(id='speed-pie-1', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
         dcc.Graph(id='heater signal', figure=fig5,style={'width': '33%', 'display': 'inline-block'}),
+        dcc.Graph(id='bar signal', figure=fig6,style={'width': '33%', 'display': 'inline-block'}),
        
        
     ])
