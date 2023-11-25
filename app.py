@@ -184,6 +184,9 @@ Analog_plots =dbc.Container([
 ])
 
 
+
+
+
 # Create histogram traces
 trace1 = go.Histogram(x=data['Velocity [km/h]'], name='Speed', opacity=0.75,nbinsx=20)
 trace2 = go.Histogram(x=data['Motor Torque [Nm]'], name='Motor Torque', opacity=0.75,nbinsx=30)
@@ -193,10 +196,26 @@ trace3 = go.Histogram(x=data['Elevation [m]'], name='Elevation', opacity=0.75,nb
 
     
 
-# Create a pie chart trace  
-trace4 = go.Pie(labels=data['Speed'], values=data['Elevation [m]'])
-trace5 = go.Pie(labels=data['Torque'], values=data['Elevation [m]'])
-trace6 = go.Pie(labels=data['Torque'], values=data['Elevation [m]'])
+# Create a scatter plot
+#  chart trace  
+# Callback to update the line plot based on slider value
+@app.callback(
+    Output('torque-time-graph', 'figure'),
+    Output('Longitude_acceleration-time-graph', 'figure'),
+    [Input('category-slider', 'value')]
+)
+def update_figure(selected_category_index):
+    selected_category = data['Speed'].unique()[selected_category_index]
+    filtered_data = data[data['Speed'] == selected_category]
+
+    fig = px.scatter(filtered_data, x='Throttle [%]', y='Motor Torque [Nm]', 
+                  title=f"Torque vs Time at Category: {selected_category}")
+    fig1 = px.scatter(filtered_data, x='Throttle [%]', y='Longitudinal Acceleration [m/s^2]', 
+                title=f"Torque vs Time at Category: {selected_category}")
+    
+    fig.update_layout(height=400, width=800)
+    fig1.update_layout(height=400, width=800)
+    return fig,fig1
 
 # Create a figure with subplots in a row
 # Create figures for each histogram
@@ -212,13 +231,6 @@ fig3.update_layout(title='Elevation', xaxis_title='Elevation', yaxis_title='Freq
 
 
 
-
-fig4 = go.Figure(data=[trace4])
-fig4.update_layout(title='Speed', xaxis_title='Speed'),
-
-
-# fig5 = go.Figure(data=[trace5])
-# fig5.update_layout(title='Torque'),
 
 
 
@@ -242,9 +254,29 @@ histogram_plots = dbc.Container([
 
 pie_plots = dbc.Container([
     dbc.Row([
-        #dcc.Graph(id='speed-pie-1', figure=fig4,style={'width': '33%', 'display': 'inline-block'}),
-        #dcc.Graph(id='heater signal', figure=fig5,style={'width': '33%', 'display': 'inline-block'}),
-        
+       html.H1("Throttle Response"),
+    dcc.Slider(
+        id='category-slider',
+        min=0,
+        max=len(data['Speed'].unique()) - 1,
+        value=0,
+        marks={i: cat for i, cat in enumerate(data['Speed'].unique())},
+        step=1
+    ),
+       html.Div([
+        dcc.Graph(
+            id='torque-time-graph',
+            config={'displayModeBar': False},  # Hide the plotly toolbar
+            style={'width': '40%', 'display': 'inline-block'}
+        ),
+        dcc.Graph(
+            id='Longitude_acceleration-time-graph',
+            config={'displayModeBar': False},  # Hide the plotly toolbar
+            style={'width': '40%', 'display': 'inline-block'}
+        )
+    ])
+   
+
        
        
     ])
@@ -258,7 +290,7 @@ pie_plots = dbc.Container([
 
 
 
-
+    
 
 app.layout = html.Div([#title
                         html.H1('BATTERY  HEATING DATA IN REAL DRIVING CYCLES', className='dashboard-title'),
@@ -270,7 +302,7 @@ app.layout = html.Div([#title
                         html.Div(histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
 
-                        html.Div(html.H3('3.Pie plots for Vehicle data')),
+                        html.Div(html.H3('3.Scatter plots for Vehicle data')),
                         html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
                         # # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
