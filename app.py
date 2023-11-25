@@ -267,12 +267,12 @@ pie_plots = dbc.Container([
         dcc.Graph(
             id='torque-time-graph',
             config={'displayModeBar': False},  # Hide the plotly toolbar
-            style={'width': '40%', 'display': 'inline-block'}
+            style={'width': '38%', 'display': 'inline-block'}
         ),
         dcc.Graph(
             id='Longitude_acceleration-time-graph',
             config={'displayModeBar': False},  # Hide the plotly toolbar
-            style={'width': '40%', 'display': 'inline-block'}
+            style={'width': '38%', 'display': 'inline-block'}
         )
     ])
    
