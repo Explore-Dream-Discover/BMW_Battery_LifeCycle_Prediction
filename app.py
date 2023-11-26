@@ -284,7 +284,30 @@ pie_plots = dbc.Container([
 
 ])
 
+#
 
+twoD_histogram_plots =dbc.Container([
+    dbc.Row([
+             
+             dbc.Col(dcc.Graph(
+        id='2d-histogram12',
+        figure=px.density_heatmap(x=data['Motor Torque [Nm]'], y=data['Elevation [m]'], nbinsx=20, nbinsy=20))),
+        dbc.Col( dcc.Graph(id='histogram',
+                           figure=px.histogram(x=data['Motor Torque [Nm]'], nbins=30)  ))
+    ]),])
+        #figure.update_layout(title='2D Histogram', xaxis_title='X Axis', yaxis_title='Y Axis', height=400, width=500),
+         
+                   
+
+
+
+
+
+
+
+
+                                                 
+                     
 
 
 
@@ -305,6 +328,12 @@ app.layout = html.Div([#title
                         html.Div(html.H3('3.Scatter plots for Vehicle data')),
                         html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
+
+                        html.Div(html.H3('4.Density Heat map Vs histogram for Torque Ditribution')),
+                        html.Div(twoD_histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
+
+
+                      
                         # # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
                         # html.Div(temp_plot_container,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
