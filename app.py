@@ -13,11 +13,8 @@ print(os.getcwd())
 data =pd.read_csv(r"data/VehicleDataAnalysis.csv")
 battery = pd.read_csv(r"data/Battery Data Analysis.csv")
 heatData = pd.read_csv(r"data/HeatDataAnalysis.csv")
-dummy =pd.DataFrame({
-    'category': ['A', 'B', 'C', 'D'],
-    'values': [30, 20, 25, 15]
-})
-print(data.columns)
+
+print(battery .columns)
 print(("*"*50))
 print((data['Regenerative Braking Signal ']==1).sum())
 
@@ -329,11 +326,11 @@ app.layout = html.Div([#title
                         html.Div(pie_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
 
-                        html.Div(html.H3('4.Density Heat map Vs histogram for Torque Ditribution')),
+                        html.Div(html.H3('4.Density Heat map Vs histogram for Torque Distribution')),
                         html.Div(twoD_histogram_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
 
 
-                      
+                        html.Div(html.H3('5.Battery Data analysis')),
                         # # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
                         # html.H3("3.Time vs. Temperature"),
                         # html.Div(temp_plot_container,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
