@@ -22,10 +22,14 @@ print((data["Regenerative Braking Signal "] == 1).sum())
 # Perform equal width binning
 # Define the number of bins
 num_bins = 3
+num_bins_temp = 5
+bin_labels_temp = ['Cool','Normal','High','Too High','Extreme']
 bin_labels = ["Low", "Medium", "Top"]
 data["Speed"] = pd.cut(data["Velocity [km/h]"], bins=num_bins, labels=bin_labels)
 data["Torque"] = pd.cut(data["Motor Torque [Nm]"], bins=num_bins, labels=bin_labels)
-
+battery['Battery_Temp_Cat'] = pd.cut(battery['Battery Temperature [�C]'], bins=num_bins_temp, labels=bin_labels_temp)
+mean_value=battery['SoC [%]'].mean() 
+battery['SoC [%]'].fillna(mean_value, inplace=True) 
 print(data["Speed"].value_counts())
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -397,6 +401,59 @@ radar_speed_volt =dbc.Container([
         }))
     ])
 ])
+
+
+
+radar_soc_tmp =dbc.Container([
+    dbc.Row([
+             dbc.Col(dcc.Graph(id = "radar1-plot",
+                               figure={
+            'data': [
+                go.Scatterpolar(
+                    r=battery['SoC [%]'],
+                    theta=battery['Battery_Temp_Cat'],
+                    fill='toself',
+                    name='Radar Chart'
+                )
+            ],
+            'layout': go.Layout(
+                title = "Battery Temperature VS State of dicharge",
+                polar=dict(
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0, 5]  # Adjust the range based on your data
+                    )
+                ),
+                showlegend=True
+            )
+        }))
+    ])
+])
+
+
+
+sunburst_soc_tmp =dbc.Container([
+    dbc.Row([
+             dbc.Col(dcc.Graph(id = "sunburst-plot",
+                              figure={'data': [go.Bar(
+                                                            x=downsampled_dt["Time [s]"],
+                                                            y=downsampled_bt['SoC [%]'],
+                                                            # mode='lines+markers',
+                                                            name='SOC'
+                                                        )
+                                                ],
+                                        'layout': {
+                                            'title': 'Time vs SOC[State Of Discharge]',
+                                            'xaxis': {'title': 'Time'},
+                                            'yaxis': {'title': 'SOC'}
+                                        },
+        }
+          
+           
+        
+    ))])
+    ])
+
         
     
 
@@ -484,7 +541,24 @@ app.layout = html.Div(
                 "display": "flex",
                 "backgroundColor": "lightblue",
                 "padding": "35px",
-            },)
+            },),
+
+       
+        html.Div(
+            [radar_soc_tmp,sunburst_soc_tmp],
+            
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "35px",
+            },)    
+
+
+
+
+
+
+
         # # html.Div(Bullet_plots,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
         # html.H3("3.Time vs. Temperature"),
         # html.Div(temp_plot_container,style={'display': 'flex','backgroundColor': 'lightblue', 'padding': '10px'}),
