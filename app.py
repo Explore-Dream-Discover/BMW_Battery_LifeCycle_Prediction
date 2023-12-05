@@ -511,15 +511,15 @@ app.layout = html.Div(
                 "padding": "35px",
             },
         ),
-        # html.Div(html.H3("2.Histogram plots for Vehicle data")),
-        # html.Div(
-        #     histogram_plots,
-        #     style={
-        #         "display": "flex",
-        #         "backgroundColor": "lightblue",
-        #         "padding": "45px",
-        #     },
-        # ),
+        html.Div(html.H3("2.Histogram plots for Vehicle data")),
+        html.Div(
+            histogram_plots,
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "45px",
+            },
+        ),
         # html.Div(html.H3("3.Scatter plots for Vehicle data")),
         # html.Div(
         #     pie_plots,
