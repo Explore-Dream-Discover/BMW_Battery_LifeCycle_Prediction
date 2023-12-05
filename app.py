@@ -32,8 +32,8 @@ mean_value=battery['SoC [%]'].mean()
 battery['SoC [%]'].fillna(mean_value, inplace=True) 
 
 print(battery.columns)
-downsampled_bt = battery.sample(n=1000)
-downsampled_dt = data.sample(n=1000)
+downsampled_bt = battery.sample(n=100)
+downsampled_dt = data.sample(n=100)
 print(data["Speed"].value_counts())
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
