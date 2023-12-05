@@ -30,6 +30,10 @@ data["Torque"] = pd.cut(data["Motor Torque [Nm]"], bins=num_bins, labels=bin_lab
 battery['Battery_Temp_Cat'] = pd.cut(battery['Battery Temperature [�C]'], bins=num_bins_temp, labels=bin_labels_temp)
 mean_value=battery['SoC [%]'].mean() 
 battery['SoC [%]'].fillna(mean_value, inplace=True) 
+
+print(battery.columns)
+downsampled_bt = battery.sample(n=1000)
+downsampled_dt = data.sample(n=1000)
 print(data["Speed"].value_counts())
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -359,8 +363,7 @@ twoD_histogram_plots =dbc.Container([
 #                            figure=px.histogram(x=data['Motor Torque [Nm]'], nbins=30)  ))
 #     ]),])
 
-downsampled_bt = battery.sample(n=1000)
-downsampled_dt = data.sample(n=1000)
+
 curr_vs_Volt =dbc.Container([
     dbc.Row([
              dbc.Col(    dcc.Graph(
@@ -383,7 +386,7 @@ curr_vs_Volt =dbc.Container([
     ])
 ])
 
-
+print(downsampled_bt.columns,"*"*40)
 radar_speed_volt =dbc.Container([
     dbc.Row([
              dbc.Col(dcc.Graph(id = "radar-plot",
@@ -406,29 +409,32 @@ radar_speed_volt =dbc.Container([
 
 radar_soc_tmp =dbc.Container([
     dbc.Row([
-             dbc.Col(dcc.Graph(id = "radar1-plot",
-                               figure={
-            'data': [
-                go.Scatterpolar(
-                    r=battery['SoC [%]'],
-                    theta=battery['Battery_Temp_Cat'],
-                    fill='toself',
-                    name='Radar Chart'
-                )
-            ],
-            'layout': go.Layout(
-                title = "Battery Temperature VS State of dicharge",
-                polar=dict(
-                    radialaxis=dict(
-                        visible=True,
-                        range=[0, 5]  # Adjust the range based on your data
-                    )
-                ),
-                showlegend=True
-            )
-        }))
-    ])
+             dbc.Col(dcc.Graph(
+        id='pie-chart',
+        figure={
+            'data': [go.Pie(labels=downsampled_bt['Battery_Temp_Cat'], values=downsampled_bt['Battery Temperature [�C]'])],
+            'layout': {
+                'title': 'Battery Temperature'
+            }
+        }
+             ))
 ])
+
+            
+    ])
+                 
+                 
+                 
+                 
+   
+
+
+
+
+                
+    
+
+
 
 
 
