@@ -32,8 +32,8 @@ mean_value=battery['SoC [%]'].mean()
 battery['SoC [%]'].fillna(mean_value, inplace=True) 
 
 print(battery.columns)
-downsampled_bt = battery.sample(n=100)
-downsampled_dt = data.sample(n=100)
+downsampled_bt = battery.sample(n=1000)
+downsampled_dt = data.sample(n=1000)
 print(data["Speed"].value_counts())
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -529,35 +529,35 @@ app.layout = html.Div(
                 "padding": "35px",
             },
         ),
-        html.Div(html.H3("4.Density Heat map Vs histogram for Torque Distribution")),
-        html.Div(
-            twoD_histogram_plots,
-            style={
-                "display": "flex",
-                "backgroundColor": "lightblue",
-                "padding": "35px",
-            },
-        ),
-        html.Div(html.H3("5.Battery Data analysis")),
-                html.Div(
-            [curr_vs_Volt,
-            radar_speed_volt],
+        # html.Div(html.H3("4.Density Heat map Vs histogram for Torque Distribution")),
+        # html.Div(
+        #     twoD_histogram_plots,
+        #     style={
+        #         "display": "flex",
+        #         "backgroundColor": "lightblue",
+        #         "padding": "35px",
+        #     },
+        # ),
+        # html.Div(html.H3("5.Battery Data analysis")),
+        #         html.Div(
+        #     [curr_vs_Volt,
+        #     radar_speed_volt],
             
-            style={
-                "display": "flex",
-                "backgroundColor": "lightblue",
-                "padding": "35px",
-            },),
+        #     style={
+        #         "display": "flex",
+        #         "backgroundColor": "lightblue",
+        #         "padding": "35px",
+        #     },),
 
        
-        html.Div(
-            [radar_soc_tmp,sunburst_soc_tmp],
+        # html.Div(
+        #     [radar_soc_tmp,sunburst_soc_tmp],
             
-            style={
-                "display": "flex",
-                "backgroundColor": "lightblue",
-                "padding": "35px",
-            },)    
+        #     style={
+        #         "display": "flex",
+        #         "backgroundColor": "lightblue",
+        #         "padding": "35px",
+        #     },)    
 
 
 
