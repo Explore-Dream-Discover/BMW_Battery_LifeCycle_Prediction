@@ -407,21 +407,21 @@ radar_speed_volt =dbc.Container([
 
 
 
-radar_soc_tmp =dbc.Container([
-    dbc.Row([
-             dbc.Col(dcc.Graph(
-        id='pie-chart',
-        figure={
-            'data': [go.Pie(labels=downsampled_bt['Battery_Temp_Cat'], values=downsampled_bt['Battery Temperature [�C]'])],
-            'layout': {
-                'title': 'Battery Temperature'
-            }
-        }
-             ))
-])
+# radar_soc_tmp =dbc.Container([
+#     dbc.Row([
+#              dbc.Col(dcc.Graph(
+#         id='pie-chart',
+#         figure={
+#             'data': [go.Pie(labels=downsampled_bt['Battery_Temp_Cat'], values=downsampled_bt['Battery Temperature [�C]'])],
+#             'layout': {
+#                 'title': 'Battery Temperature'
+#             }
+#         }
+#              ))
+# ])
 
             
-    ])
+#     ])
                  
                  
                  
@@ -438,27 +438,27 @@ radar_soc_tmp =dbc.Container([
 
 
 
-sunburst_soc_tmp =dbc.Container([
-    dbc.Row([
-             dbc.Col(dcc.Graph(id = "sunburst-plot",
-                              figure={'data': [go.Bar(
-                                                            x=downsampled_dt["Time [s]"],
-                                                            y=downsampled_bt['SoC [%]'],
-                                                            # mode='lines+markers',
-                                                            name='SOC'
-                                                        )
-                                                ],
-                                        'layout': {
-                                            'title': 'Time vs SOC[State Of Discharge]',
-                                            'xaxis': {'title': 'Time'},
-                                            'yaxis': {'title': 'SOC'}
-                                        },
-        }
+# sunburst_soc_tmp =dbc.Container([
+#     dbc.Row([
+#              dbc.Col(dcc.Graph(id = "sunburst-plot",
+#                               figure={'data': [go.Bar(
+#                                                             x=downsampled_dt["Time [s]"],
+#                                                             y=downsampled_bt['SoC [%]'],
+#                                                             # mode='lines+markers',
+#                                                             name='SOC'
+#                                                         )
+#                                                 ],
+#                                         'layout': {
+#                                             'title': 'Time vs SOC[State Of Discharge]',
+#                                             'xaxis': {'title': 'Time'},
+#                                             'yaxis': {'title': 'SOC'}
+#                                         },
+#         }
           
            
         
-    ))])
-    ])
+#     ))])
+#     ])
 
         
     
