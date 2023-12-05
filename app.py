@@ -537,17 +537,22 @@ app.layout = html.Div(
                 "backgroundColor": "lightblue",
                 "padding": "35px",
             },
-        ),
-        html.Div(html.H3("5.Battery Data analysis")),
-                html.Div(
-            [curr_vs_Volt,
-            radar_speed_volt],
+        ),   
+
+
+
+
+        
+        # html.Div(html.H3("5.Battery Data analysis")),
+        #         html.Div(
+        #     [curr_vs_Volt,
+        #     radar_speed_volt],
             
-            style={
-                "display": "flex",
-                "backgroundColor": "lightblue",
-                "padding": "35px",
-            },),
+        #     style={
+        #         "display": "flex",
+        #         "backgroundColor": "lightblue",
+        #         "padding": "35px",
+        #     },),
 
        
         # html.Div(
