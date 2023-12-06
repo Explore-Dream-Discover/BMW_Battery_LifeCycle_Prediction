@@ -535,14 +535,14 @@ app.layout = html.Div(
             },
         ),
         html.Div(html.H3("4.Density Heat map Vs histogram for Torque Distribution")),
-        # html.Div(
-        #     twoD_histogram_plots,
-        #     style={
-        #         "display": "flex",
-        #         "backgroundColor": "lightblue",
-        #         "padding": "35px",
-        #     },
-        # ),   
+        html.Div(
+            twoD_histogram_plots,
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "35px",
+            },
+        ),   
 
 
 
