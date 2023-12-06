@@ -516,58 +516,59 @@ app.layout = html.Div(
                 "padding": "35px",
             },
         ),
-#         html.Div(html.H3("2.Histogram plots for Vehicle data")),
-#         html.Div(
-#             histogram_plots,
-#             style={
-#                 "display": "flex",
-#                 "backgroundColor": "lightblue",
-#                 "padding": "45px",
-#             },
-#         ),
-#         html.Div(html.H3("3.Scatter plots for Vehicle data")),
-#         html.Div(
-#             pie_plots,
-#             style={
-#                 "display": "flex",
-#                 "backgroundColor": "lightblue",
-#                 "padding": "35px",
-#             },
-#         ),
-#         html.Div(html.H3("4.Density Heat map Vs histogram for Torque Distribution")),
-#         html.Div(
-#             twoD_histogram_plots,
-#             style={
-#                 "display": "flex",
-#                 "backgroundColor": "lightblue",
-#                 "padding": "35px",
-#             },
-#         ),   
+        html.Div(html.H3("2.Histogram plots for Vehicle data")),
+        html.Div(
+            histogram_plots,
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "45px",
+            },
+        ),
+        html.Div(html.H3("3.Scatter plots for Vehicle data")),
+        html.Div(
+            pie_plots,
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "35px",
+            },
+        ),
+        html.Div(html.H3("4.Density Heat map Vs histogram for Torque Distribution")),
+        html.Div(
+            twoD_histogram_plots,
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "35px",
+            },
+        ),   
 
 
 
 
 
-#         html.Div(html.H3("5.Battery Data analysis")),
-#                 html.Div(
-#             [curr_vs_Volt,
-#             radar_speed_volt],
+        html.Div(html.H3("5.Battery Data analysis")),
+                html.Div(
+            [curr_vs_Volt,
+            radar_speed_volt],
             
-#             style={
-#                 "display": "flex",
-#                 "backgroundColor": "lightblue",
-#                 "padding": "35px",
-#             },),
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "35px",
+            },),
 
        
-#         html.Div(
-#             [radar_soc_tmp,sunburst_soc_tmp],
+        html.Div(
+            [radar_soc_tmp,sunburst_soc_tmp],
             
-#             style={
-#                 "display": "flex",
-#                 "backgroundColor": "lightblue",
-#                 "padding": "35px",
-#             },)    
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "35px",
+            },)    
+    ])
 
 
 
