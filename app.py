@@ -559,7 +559,7 @@ app.layout = html.Div(
                 "display": "flex",
                 "backgroundColor": "lightblue",
                 "padding": "35px",
-            },)  
+            },),
 
 
         html.Div(html.H3("4.Density Heat map Vs histogram for Torque Distribution")),
