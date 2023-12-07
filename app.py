@@ -548,7 +548,7 @@ app.layout = html.Div(
 
 
 
-        html.Div(html.H3("5.Battery Data analysis")),
+        html.Div(html.H3("4.Battery Data analysis")),
                 html.Div(
             [curr_vs_Volt,
             radar_speed_volt],
@@ -560,14 +560,14 @@ app.layout = html.Div(
             },),
 
        
-        # html.Div(
-        #     [radar_soc_tmp,sunburst_soc_tmp],
+        html.Div(
+            [radar_soc_tmp,sunburst_soc_tmp],
             
-        #     style={
-        #         "display": "flex",
-        #         "backgroundColor": "lightblue",
-        #         "padding": "35px",
-        #     },)    
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "35px",
+            },)    
     ])
 
 
