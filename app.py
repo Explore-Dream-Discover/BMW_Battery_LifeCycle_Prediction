@@ -535,7 +535,7 @@ app.layout = html.Div(
             style={
                 "display": "flex",
                 "backgroundColor": "lightblue",
-                "padding": "35px",
+                "padding": "45px",
             },
         ),
         html.Div(html.H3("1.Vehicle Data Analysis")),
@@ -544,7 +544,7 @@ app.layout = html.Div(
             style={
                 "display": "flex",
                 "backgroundColor": "lightblue",
-                "padding": "35px",
+                "padding": "45px",
             },
         ),
         html.Div(html.H3("2.Histogram plots for Vehicle data")),
