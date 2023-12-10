@@ -27,6 +27,17 @@ bin_labels_temp = ['Cool','Normal','High','Too High','Extreme']
 bin_labels = ["Low", "Medium", "Top"]
 data["Speed"] = pd.cut(data["Velocity [km/h]"], bins=num_bins, labels=bin_labels)
 data["Torque"] = pd.cut(data["Motor Torque [Nm]"], bins=num_bins, labels=bin_labels)
+
+
+# Map speed categories to different symbols
+speed_to_symbol = {'Low': 'circle', 'Medium': 'square', 'Top': 'diamond'}
+# Create the Symbol column based on the Speed column
+data['Symbol'] = data['Speed'].map(speed_to_symbol)
+
+
+
+
+
 battery['Battery_Temp_Cat'] = pd.cut(battery['Battery Temperature [�C]'], bins=num_bins_temp, labels=bin_labels_temp)
 mean_value=battery['SoC [%]'].mean() 
 battery['SoC [%]'].fillna(mean_value, inplace=True) 
@@ -460,6 +471,26 @@ sunburst_soc_tmp =dbc.Container([
     ))])
     ])
 
+# Create the scatter plot using Plotly Express
+fig = px.scatter( x=downsampled_bt['Battery Temperature [�C]'], y=downsampled_bt['SoC [%]'], color=downsampled_bt['Battery_Temp_Cat'], symbol=downsampled_dt['Symbol'],
+                 title='Temperature Vs State of Discharge Based on speed and temperatures',
+                 labels={'X': 'X-axis', 'Y': 'Y-axis'})
+
+Scatter_plot_tmp_soc = dbc.Container([    
+                                    dbc.Row([   
+                                        dbc.Col(dcc.Graph(
+                                            # id="Tmp_Soc",
+
+                                            # Create the scatter plot using Plotly Express
+                                            figure = fig
+
+
+                                        ))
+
+                                    ])
+
+                                    ])
+
         
     
 
@@ -548,7 +579,7 @@ app.layout = html.Div(
             style={
                 "display": "flex",
                 "backgroundColor": "lightblue",
-                "padding": "35px",
+                "padding": "45px",
             },),
 
        
@@ -558,7 +589,19 @@ app.layout = html.Div(
             style={
                 "display": "flex",
                 "backgroundColor": "lightblue",
-                "padding": "35px",
+                "padding": "45px",
+            },),
+
+
+
+
+        html.Div(
+            Scatter_plot_tmp_soc,
+            
+            style={
+                "display": "flex",
+                "backgroundColor": "lightblue",
+                "padding": "45px",
             },),
 
 
